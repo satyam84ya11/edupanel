@@ -1,0 +1,194 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model School {
+  id          String   @id @default(cuid())
+  name        String
+  schoolCode  String   @unique
+  address     String?
+  phone       String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  users       User[]
+  students    Student[]
+  faculty     Faculty[]
+  staff       Staff[]
+  attendances Attendance[]
+  fees        Fee[]
+  salaries    Salary[]
+  reports     Report[]
+}
+
+enum Role {
+  ADMIN
+  FACULTY
+  STAFF
+}
+
+model User {
+  id        String   @id @default(cuid())
+  userid    String
+  password  String
+  role      Role
+  name      String
+  email     String?
+  schoolId  String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  school    School   @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+
+  @@unique([userid, schoolId])
+}
+
+model Student {
+  id             String   @id @default(cuid())
+  schoolId       String
+  firstName      String
+  lastName      String
+  className      String
+  section        String?
+  rollNumber     String?
+  aadhaarUrl     String?
+  photoUrl       String?
+  documentsUrl   String?
+  dateOfBirth    DateTime?
+  guardianName   String?
+  guardianPhone  String?
+  address        String?
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  school         School   @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  fees           Fee[]
+  attendances    Attendance[]
+
+  @@unique([schoolId, rollNumber])
+}
+
+model Faculty {
+  id            String   @id @default(cuid())
+  schoolId      String
+  firstName     String
+  lastName      String
+  subject       String?
+  email         String?
+  phone         String?
+  aadhaarUrl    String?
+  photoUrl      String?
+  documentsUrl  String?
+  joinedAt      DateTime? 
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  school        School   @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  attendances   Attendance[]
+  salaries      Salary[]
+}
+
+model Staff {
+  id            String   @id @default(cuid())
+  schoolId      String
+  firstName     String
+  lastName      String
+  roleTitle     String
+  email         String?
+  phone         String?
+  aadhaarUrl    String?
+  photoUrl      String?
+  documentsUrl  String?
+  joinedAt      DateTime?
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  school        School   @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  attendances   Attendance[]
+  salaries      Salary[]
+}
+
+enum AttendanceEntityType {
+  STUDENT
+  FACULTY
+  STAFF
+}
+
+model Attendance {
+  id           String               @id @default(cuid())
+  schoolId     String
+  date         DateTime
+  entityType   AttendanceEntityType
+  studentId    String?
+  facultyId    String?
+  staffId      String?
+  status       String               // PRESENT, ABSENT, HALF_DAY, etc.
+  createdAt    DateTime             @default(now())
+
+  school       School               @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  student      Student?             @relation(fields: [studentId], references: [id])
+  faculty      Faculty?             @relation(fields: [facultyId], references: [id])
+  staff        Staff?               @relation(fields: [staffId], references: [id])
+
+  @@index([schoolId, date, entityType])
+}
+
+model Fee {
+  id           String   @id @default(cuid())
+  schoolId     String
+  studentId    String
+  amount       Decimal
+  dueDate      DateTime
+  paidDate     DateTime?
+  status       String   // PENDING, PAID, PARTIALLY_PAID
+  receiptUrl   String?
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  school       School   @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  student      Student  @relation(fields: [studentId], references: [id])
+
+  @@index([schoolId, studentId])
+}
+
+model Salary {
+  id           String   @id @default(cuid())
+  schoolId     String
+  facultyId    String?
+  staffId      String?
+  month        Int
+  year         Int
+  amount       Decimal
+  paidDate     DateTime?
+  status       String   // PENDING, PAID, PARTIALLY_PAID
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  school       School   @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  faculty      Faculty? @relation(fields: [facultyId], references: [id])
+  staff        Staff?   @relation(fields: [staffId], references: [id])
+
+  @@index([schoolId, month, year])
+}
+
+model Report {
+  id          String   @id @default(cuid())
+  schoolId    String
+  title       String
+  type        String   // e.g. ATTENDANCE_MONTHLY, FEES_SUMMARY, etc.
+  month       Int?
+  year        Int?
+  fileUrl     String?
+  createdAt   DateTime @default(now())
+
+  school      School   @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+
+  @@index([schoolId, type, month, year])
+}
+
+
