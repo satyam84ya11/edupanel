@@ -22,9 +22,9 @@ model User {
   status       String?   @default("active")
   meta         Json?
 
-  student      Student?  @relation(fields: [id], references: [userId])
-  faculty      Faculty?  @relation(fields: [id], references: [userId])
-  staff        Staff?    @relation(fields: [id], references: [userId])
+  student      Student?
+  faculty      Faculty?
+  staff        Staff?
   files        File[]
   auditLogs    AuditLog[] @relation("actor")
 }
@@ -66,7 +66,7 @@ model Staff {
   joinedAt   DateTime? @default(now())
 
   user       User    @relation(fields: [userId], references: [id])
-  attendance Attendance[]
+  
 }
 
 model Attendance {
