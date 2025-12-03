@@ -41,7 +41,6 @@ model Student {
 
   user        User     @relation(fields: [userId], references: [id])
   fees        Fee[]
-  attendance  Attendance[]
 }
 
 model Faculty {
@@ -55,7 +54,6 @@ model Faculty {
 
   user         User     @relation(fields: [userId], references: [id])
   lectures     Lecture[]
-  attendance   Attendance[]
 }
 
 model Staff {
@@ -87,6 +85,7 @@ model Lecture {
   periodNumber Int
   subject     String
   lectureCount Int?
+  faculty     Faculty  @relation(fields: [facultyId], references: [id])
 }
 
 model Fee {
@@ -98,6 +97,7 @@ model Fee {
   paidStatus String
   dueDate    DateTime?
   receiptFile String?
+  student    Student  @relation(fields: [studentId], references: [id])
 }
 
 model SalaryPayment {
@@ -131,6 +131,7 @@ model File {
   size      Int?
   uploadedAt DateTime @default(now())
   uploadedBy String?
+  uploadedByUser User? @relation(fields: [uploadedBy], references: [id])
 }
 
 enum Role {
