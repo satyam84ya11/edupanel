@@ -10,7 +10,12 @@
     "prisma:migrate": "prisma migrate dev --name init",
     "prisma:generate": "prisma generate",
     "seed": "node prisma/seed.js",
+    "migrate:deploy": "prisma migrate deploy",
+    "start:prod": "node src/index.js",
     "test": "echo \"No tests configured yet\" && exit 0"
+  },
+  "engines": {
+    "node": ">=18 <=22"
   },
   "dependencies": {
     "@prisma/client": "^5.0.0",
