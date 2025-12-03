@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kids Academy - School Management System</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-content">
+                <div class="logo">
+                    <i class="fas fa-graduation-cap"></i>
+                    <span>Kids Academy</span>
+                </div>
+                <div class="nav-menu" id="navMenu">
+                    <a href="#features">Features</a>
+                    <a href="#screenshots">Screenshots</a>
+                    <a href="#tech">Technology</a>
+                    <a href="#pricing">Pricing</a>
+                    <a href="#contact">Contact</a>
+                </div>
+                <div class="hamburger" id="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>School Management Made Simple</h1>
+                <p>Complete solution for managing multiple schools with advanced features for attendance, fees, salaries, and reporting</p>
+                <div class="hero-buttons">
+                    <button class="btn btn-primary" onclick="scrollToSection('features')">Explore Features</button>
+                    <button class="btn btn-secondary" onclick="openDemo()">Request Demo</button>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="dashboard-preview">
+                    <div class="window-header">
+                        <span>dashboard.kidsacademy.com</span>
+                    </div>
+                    <div class="window-content">
+                        <div class="sidebar">
+                            <div class="logo-small"><i class="fas fa-graduation-cap"></i></div>
+                            <div class="menu-item active"><i class="fas fa-tachometer-alt"></i> Dashboard</div>
+                            <div class="menu-item"><i class="fas fa-chalkboard-user"></i> Teachers</div>
+                            <div class="menu-item"><i class="fas fa-users"></i> Students</div>
+                            <div class="menu-item"><i class="fas fa-clipboard-list"></i> Attendance</div>
+                            <div class="menu-item"><i class="fas fa-file-invoice-dollar"></i> Fees</div>
+                        </div>
+                        <div class="dashboard-main">
+                            <div class="stat-card">
+                                <div class="stat-value">245</div>
+                                <div class="stat-label">Students</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-value">24</div>
+                                <div class="stat-label">Teachers</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-value">98%</div>
+                                <div class="stat-label">Attendance</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="container">
+            <h2>Powerful Features</h2>
+            <p class="section-subtitle">Everything you need to manage your school effectively</p>
+            
+            <div class="features-grid">
+                <!-- Feature 1 -->
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Admin Control</h3>
+                    <p>Only administrators can create and manage teacher accounts with secure password management</p>
+                </div>
+
+                <!-- Feature 2 -->
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <h3>Multi-School Support</h3>
+                    <p>Manage unlimited schools from a single platform with complete data isolation</p>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-clipboard-list"></i>
+                    </div>
+                    <h3>Attendance Tracking</h3>
+                    <p>Mark and track daily attendance for students and teachers with detailed history</p>
+                </div>
+
+                <!-- Feature 4 -->
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-file-invoice-dollar"></i>
+                    </div>
+                    <h3>Fees Management</h3>
+                    <p>Track student fees, payments, and generate reports automatically</p>
+                </div>
+
+                <!-- Feature 5 -->
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-money-bill-wave"></i>
+                    </div>
+                    <h3>Salary Management</h3>
+                    <p>Calculate and manage teacher salaries with automated calculations</p>
+                </div>
+
+                <!-- Feature 6 -->
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-bar"></i>
+                    </div>
+                    <h3>Reports & Analytics</h3>
+                    <p>Generate comprehensive reports and export data to Excel with one click</p>
+                </div>
+
+                <!-- Feature 7 -->
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Student Management</h3>
+                    <p>Complete student information system with profile management and history</p>
+                </div>
+
+                <!-- Feature 8 -->
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>Responsive Design</h3>
+                    <p>Works perfectly on desktop, tablet, and mobile devices</p>
+                </div>
+
+                <!-- Feature 9 -->
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <h3>Enterprise Security</h3>
+                    <p>JWT authentication, HTTPS encryption, and role-based access control</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Screenshots Section -->
+    <section class="screenshots" id="screenshots">
+        <div class="container">
+            <h2>Dashboard Screenshots</h2>
+            <p class="section-subtitle">See Kids Academy in action</p>
+            
+            <div class="screenshots-grid">
+                <div class="screenshot-item">
+                    <div class="screenshot-placeholder">
+                        <i class="fas fa-image"></i>
+                        <p>Dashboard Overview</p>
+                    </div>
+                </div>
+                <div class="screenshot-item">
+                    <div class="screenshot-placeholder">
+                        <i class="fas fa-image"></i>
+                        <p>Teacher Management</p>
+                    </div>
+                </div>
+                <div class="screenshot-item">
+                    <div class="screenshot-placeholder">
+                        <i class="fas fa-image"></i>
+                        <p>Attendance Tracking</p>
+                    </div>
+                </div>
+                <div class="screenshot-item">
+                    <div class="screenshot-placeholder">
+                        <i class="fas fa-image"></i>
+                        <p>Reports & Analytics</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technology Stack Section -->
+    <section class="tech" id="tech">
+        <div class="container">
+            <h2>Built With Modern Technology</h2>
+            <p class="section-subtitle">Enterprise-grade stack for reliability and scalability</p>
+            
+            <div class="tech-grid">
+                <div class="tech-item">
+                    <div class="tech-icon backend">
+                        <i class="fas fa-server"></i>
+                    </div>
+                    <h3>Backend</h3>
+                    <p>Laravel 11</p>
+                    <small>Elegant PHP Framework</small>
+                </div>
+
+                <div class="tech-item">
+                    <div class="tech-icon frontend">
+                        <i class="fas fa-laptop"></i>
+                    </div>
+                    <h3>Frontend</h3>
+                    <p>Next.js & React</p>
+                    <small>Modern React Framework</small>
+                </div>
+
+                <div class="tech-item">
+                    <div class="tech-icon database">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <h3>Database</h3>
+                    <p>MySQL</p>
+                    <small>Reliable & Fast</small>
+                </div>
+
+                <div class="tech-item">
+                    <div class="tech-icon auth">
+                        <i class="fas fa-key"></i>
+                    </div>
+                    <h3>Authentication</h3>
+                    <p>JWT + Sanctum</p>
+                    <small>Secure Token-Based Auth</small>
+                </div>
+
+                <div class="tech-item">
+                    <div class="tech-icon styling">
+                        <i class="fas fa-palette"></i>
+                    </div>
+                    <h3>Styling</h3>
+                    <p>TailwindCSS</p>
+                    <small>Utility-First CSS</small>
+                </div>
+
+                <div class="tech-item">
+                    <div class="tech-icon deployment">
+                        <i class="fas fa-cloud"></i>
+                    </div>
+                    <h3>Deployment</h3>
+                    <p>Multi-Cloud Ready</p>
+                    <small>VPS, Shared Hosting, AWS</small>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat">
+                    <div class="stat-number">26</div>
+                    <div class="stat-text">API Endpoints</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">8</div>
+                    <div class="stat-text">Frontend Pages</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">5000+</div>
+                    <div class="stat-text">Lines of Code</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">99.5%</div>
+                    <div class="stat-text">Uptime</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing" id="pricing">
+        <div class="container">
+            <h2>Simple Pricing</h2>
+            <p class="section-subtitle">Choose the plan that fits your needs</p>
+            
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <h3>Single School</h3>
+                    <div class="price">
+                        <span class="currency">$</span>
+                        <span class="amount">99</span>
+                        <span class="period">/month</span>
+                    </div>
+                    <ul class="features-list">
+                        <li><i class="fas fa-check"></i> 1 School</li>
+                        <li><i class="fas fa-check"></i> Up to 500 Students</li>
+                        <li><i class="fas fa-check"></i> Up to 50 Teachers</li>
+                        <li><i class="fas fa-check"></i> Basic Reports</li>
+                        <li><i class="fas fa-check"></i> Email Support</li>
+                    </ul>
+                    <button class="btn btn-secondary">Get Started</button>
+                </div>
+
+                <div class="pricing-card featured">
+                    <div class="badge">Most Popular</div>
+                    <h3>Multi-School</h3>
+                    <div class="price">
+                        <span class="currency">$</span>
+                        <span class="amount">299</span>
+                        <span class="period">/month</span>
+                    </div>
+                    <ul class="features-list">
+                        <li><i class="fas fa-check"></i> Unlimited Schools</li>
+                        <li><i class="fas fa-check"></i> Unlimited Students</li>
+                        <li><i class="fas fa-check"></i> Unlimited Teachers</li>
+                        <li><i class="fas fa-check"></i> Advanced Reports</li>
+                        <li><i class="fas fa-check"></i> Priority Support</li>
+                        <li><i class="fas fa-check"></i> API Access</li>
+                    </ul>
+                    <button class="btn btn-primary">Get Started</button>
+                </div>
+
+                <div class="pricing-card">
+                    <h3>Enterprise</h3>
+                    <div class="price">
+                        <span class="currency">$</span>
+                        <span class="amount">Custom</span>
+                        <span class="period">/month</span>
+                    </div>
+                    <ul class="features-list">
+                        <li><i class="fas fa-check"></i> Custom Infrastructure</li>
+                        <li><i class="fas fa-check"></i> Dedicated Support</li>
+                        <li><i class="fas fa-check"></i> Custom Features</li>
+                        <li><i class="fas fa-check"></i> SLA Guarantee</li>
+                        <li><i class="fas fa-check"></i> On-Premise Option</li>
+                    </ul>
+                    <button class="btn btn-secondary">Contact Sales</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq">
+        <div class="container">
+            <h2>Frequently Asked Questions</h2>
+            
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <span>Is Kids Academy secure?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes! Kids Academy uses enterprise-grade security including JWT authentication, HTTPS encryption, role-based access control, and strict data isolation for multi-school support.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <span>Can I manage multiple schools?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Absolutely! The Multi-School plan allows you to manage unlimited schools with complete data isolation. Each school has its own separate data, users, and administrators.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <span>How do teachers get their login credentials?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Only administrators can create teacher accounts and set passwords. Teachers cannot create their own accounts or modify login credentials. Admins can reset passwords at any time.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <span>Can I export reports to Excel?</span>
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes! You can export attendance reports, fee records, and salary information to Excel with a single click. Reports are automatically formatted and ready for analysis.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <span>What about data backups?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We provide automatic daily backups and you can download backups anytime. Enterprise plans include on-premise backup options and custom retention policies.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <span>Is there a mobile app?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>The web application is fully responsive and works great on mobile devices. Native mobile apps are coming in 2025 as part of our roadmap.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <div class="container">
+            <h2>What Schools Say</h2>
+            <p class="section-subtitle">Trusted by leading educational institutions</p>
+            
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p>"Kids Academy has transformed how we manage our school. The automated reports save us hours every week!"</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">DR</div>
+                        <div>
+                            <div class="author-name">Dr. Rajesh Kumar</div>
+                            <div class="author-title">Principal, St. Mary's School</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p>"The multi-school support is perfect for our chain. Managing 5 schools from one dashboard is incredibly efficient."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">MP</div>
+                        <div>
+                            <div class="author-name">Ms. Priya Sharma</div>
+                            <div class="author-title">Director, EduChain Group</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p>"Security and data privacy are our top concerns. Kids Academy's implementation is exactly what we needed."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">AP</div>
+                        <div>
+                            <div class="author-name">Mr. Arun Patel</div>
+                            <div class="author-title">Admin Head, Delhi Public School</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Ready to Transform Your School Management?</h2>
+                <p>Start your free trial today. No credit card required.</p>
+                <div class="cta-buttons">
+                    <button class="btn btn-primary btn-large" onclick="scrollToSection('contact')">Get Started</button>
+                    <button class="btn btn-secondary btn-large" onclick="openDemo()">Schedule Demo</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2>Get In Touch</h2>
+            <p class="section-subtitle">We're here to help</p>
+            
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div>
+                            <h4>Address</h4>
+                            <p>123 Education Street<br>Delhi, India 110001</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div>
+                            <h4>Phone</h4>
+                            <p>+91 (11) 1234-5678<br>Mon-Fri 9AM-6PM IST</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div>
+                            <h4>Email</h4>
+                            <p>support@kidsacademy.com<br>sales@kidsacademy.com</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div>
+                            <h4>Hours</h4>
+                            <p>Mon-Fri: 9AM - 6PM<br>Sat: 10AM - 2PM</p>
+                        </div>
+                    </div>
+                </div>
+
+                <form class="contact-form" onsubmit="handleSubmit(event)">
+                    <div class="form-group">
+                        <input type="text" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" placeholder="Your Email" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" placeholder="Subject" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea placeholder="Your Message" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Kids Academy</h4>
+                    <p>Transforming school management through technology and innovation.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Product</h4>
+                    <ul>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#pricing">Pricing</a></li>
+                        <li><a href="#screenshots">Screenshots</a></li>
+                        <li><a href="#tech">Technology</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">News</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="#">Documentation</a></li>
+                        <li><a href="#">API Docs</a></li>
+                        <li><a href="#">Support</a></li>
+                        <li><a href="#">Status</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 Kids Academy. All rights reserved.</p>
+                <div class="footer-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Demo Modal -->
+    <div class="modal" id="demoModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Schedule a Demo</h2>
+                <button class="modal-close" onclick="closeModal()">&times;</button>
+            </div>
+            <form class="modal-form" onsubmit="handleDemoSubmit(event)">
+                <div class="form-group">
+                    <input type="text" placeholder="School Name" required>
+                </div>
+                <div class="form-group">
+                    <input type="text" placeholder="Your Name" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" placeholder="Email" required>
+                </div>
+                <div class="form-group">
+                    <input type="tel" placeholder="Phone" required>
+                </div>
+                <div class="form-group">
+                    <select required>
+                        <option value="">Select Preferred Time</option>
+                        <option value="9-11">9 AM - 11 AM</option>
+                        <option value="11-1">11 AM - 1 PM</option>
+                        <option value="2-4">2 PM - 4 PM</option>
+                        <option value="4-6">4 PM - 6 PM</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Schedule Demo</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

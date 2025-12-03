@@ -1,0 +1,154 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id           String    @id @default(uuid())
+  userid       String    @unique
+  passwordHash String
+  role         Role
+  name         String
+  phone        String?
+  email        String?
+  address      String?
+  dob          DateTime?
+  aadhaar      String?   @unique
+  joinedAt     DateTime? @default(now())
+  status       String?   @default("active")
+  meta         Json?
+
+  student      Student?  @relation(fields: [id], references: [userId])
+  faculty      Faculty?  @relation(fields: [id], references: [userId])
+  staff        Staff?    @relation(fields: [id], references: [userId])
+  files        File[]
+  auditLogs    AuditLog[] @relation("actor")
+}
+
+model Student {
+  id          String   @id @default(uuid())
+  userId      String   @unique
+  admissionNo String   @unique
+  class       String
+  section     String?
+  rollNo      Int?
+  marksheets  Json?
+  parentIds   String[] @default([])
+
+  user        User     @relation(fields: [userId], references: [id])
+  fees        Fee[]
+  attendance  Attendance[]
+}
+
+model Faculty {
+  id           String   @id @default(uuid())
+  userId       String   @unique
+  subjects     String[] @default([])
+  classAssigned String[] @default([])
+  totalLectures Int?    @default(0)
+  totalLeaves   Int?    @default(0)
+  salaryMeta    Json?
+
+  user         User     @relation(fields: [userId], references: [id])
+  lectures     Lecture[]
+  attendance   Attendance[]
+}
+
+model Staff {
+  id        String  @id @default(uuid())
+  userId    String  @unique
+  designation String
+  salary     Float?
+  shift      String?
+  documents  Json?
+  joinedAt   DateTime? @default(now())
+
+  user       User    @relation(fields: [userId], references: [id])
+  attendance Attendance[]
+}
+
+model Attendance {
+  id          String   @id @default(uuid())
+  entityType  EntityType
+  entityId    String
+  date        DateTime
+  status      AttendanceStatus
+  notes       String?
+}
+
+model Lecture {
+  id          String   @id @default(uuid())
+  facultyId   String
+  date        DateTime
+  periodNumber Int
+  subject     String
+  lectureCount Int?
+}
+
+model Fee {
+  id         String  @id @default(uuid())
+  studentId  String
+  month      Int
+  year       Int
+  amount     Float
+  paidStatus String
+  dueDate    DateTime?
+  receiptFile String?
+}
+
+model SalaryPayment {
+  id             String  @id @default(uuid())
+  staffOrFacultyId String
+  month          Int
+  year           Int
+  amount         Float
+  paidOn         DateTime?
+  status         String
+  slipFile       String?
+}
+
+model AuditLog {
+  id         String   @id @default(uuid())
+  actorId    String?
+  action     String
+  targetType String
+  targetId   String?
+  timestamp  DateTime @default(now())
+  meta       Json?
+
+  actor      User?    @relation("actor", fields: [actorId], references: [id])
+}
+
+model File {
+  id        String   @id @default(uuid())
+  url       String
+  filename  String
+  mime      String?
+  size      Int?
+  uploadedAt DateTime @default(now())
+  uploadedBy String?
+}
+
+enum Role {
+  admin
+  faculty
+  student
+  parent
+  staff
+}
+
+enum EntityType {
+  student
+  faculty
+  staff
+}
+
+enum AttendanceStatus {
+  Present
+  Absent
+  Leave
+}

@@ -1,0 +1,21 @@
+services:
+  - type: web
+    name: kidsacademy-backend
+    env: node
+    repo: YOUR_GITHUB_REPO_URL
+    branch: main
+    plan: free
+    buildCommand: "npm install && npx prisma generate"
+    startCommand: "node src/index.js"
+    envVars:
+      - key: DATABASE_URL
+        value: "postgres://..." # set in Render dashboard or replace with the managed DB URL
+      - key: JWT_SECRET
+        value: "change-me"
+      - key: UPLOADS_DIR
+        value: "/tmp/uploads"
+
+# Optional: managed postgres service declaration (Render will create one when you add it via dashboard)
+# Note: You can instead create a managed DB in the Render dashboard and paste the DATABASE_URL above.
+
+# If you prefer an infrastructure-as-code render.yaml, update repo+service details and create a private repository in GitHub with access.

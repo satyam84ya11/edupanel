@@ -1,0 +1,45 @@
+name: Deploy Frontend
+
+on:
+  push:
+    paths:
+      - 'frontend-vite/**'
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Use Node.js 18
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Install dependencies
+        working-directory: frontend-vite
+        run: npm ci
+
+      - name: Build
+        working-directory: frontend-vite
+        run: npm run build
+
+      - name: Deploy to Netlify
+        if: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+        run: |
+          echo "Deploying to Netlify..."
+          npx netlify-cli@latest deploy --prod --dir=frontend-vite/dist --site "$NETLIFY_SITE_ID" --auth "$NETLIFY_AUTH_TOKEN" --message "Deploy from GitHub Actions"
+
+      - name: Deploy to Vercel
+        if: ${{ secrets.VERCEL_TOKEN && !secrets.NETLIFY_AUTH_TOKEN }}
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+        run: |
+          echo "Deploying to Vercel..."
+          npm i -g vercel@latest
+          # Use vercel CLI to deploy the frontend folder; make sure project is linked or VERCEL_TOKEN has access
+          npx vercel --prod --token "$VERCEL_TOKEN" --confirm --cwd frontend-vite

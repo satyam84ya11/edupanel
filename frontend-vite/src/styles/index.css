@@ -1,0 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root{
+  --royal: #2b5eff;
+}
+
+body{
+  @apply bg-white text-gray-800;
+}
+
+/* Simple utility for cards */
+.card{
+  @apply bg-white rounded-lg shadow-md p-4;
+}
